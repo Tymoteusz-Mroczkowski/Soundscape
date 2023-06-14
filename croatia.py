@@ -14,22 +14,17 @@ class Croatia(Soundscape):
         self.horn = AudioSegment.from_file('Sounds/Croatia/Events/Foghorn.wav')
      
     def playAmbience(self):
-        if self.exit_flag:
-            exit(0)
         def waves():
-            while not self.exit_flag:
+            while True: #not Soundscape.exit_flag:
                 waveNum = random.randint(0,5)
                 Soundscape.non_blocking_sound(self.waves[waveNum])
-                if self.exit_flag:
-                    exit(0)
                 time.sleep(self.waves[waveNum].duration_seconds*0.8)
         def cicadas():
-            while not self.exit_flag:
+            while True: #not Soundscape.exit_flag:
                 num = random.randint(0,5)
                 Soundscape.non_blocking_sound(self.cicadas[num])
-                if self.exit_flag:
-                    exit(0)
                 time.sleep(self.cicadas[num].duration_seconds*0.8)
+
         Soundscape.non_blocking_function(waves)
         Soundscape.non_blocking_function(cicadas)
     
@@ -41,7 +36,7 @@ class Croatia(Soundscape):
         time.sleep(self.horn.duration_seconds)
     
     def loop(self):
-        while not self.exit_flag:
+        while not Soundscape.exit_flag:
             if random.uniform(0,1) <= 1/60:
                 self.playHorn()
             time.sleep(1)

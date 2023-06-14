@@ -7,7 +7,6 @@ import sys
 class Soundscape():
     exit_flag = False
     handlerFlag = False
-    
     def __init__(self):
         self.loadFiles()
         self.starter()
